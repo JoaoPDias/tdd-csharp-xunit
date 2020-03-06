@@ -1,8 +1,7 @@
 ﻿using System;
-using Microsoft.VisualBasic;
 using Xunit;
 
-namespace CursoOnline.DominioTest._Util
+namespace OnlineCourse.DomainTest._Util
 {
     public static class AssertExtensions
     {

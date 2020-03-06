@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bogus" Version="29.0.1" />
     <PackageReference Include="FluentAssertions" Version="5.10.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
     <PackageReference Include="xunit" Version="2.4.0" />
@@ -15,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="_Builders\" />
+    <ProjectReference Include="..\..\src\CursoOnline.Dominio\OnlineCourse.Domain.csproj" />
   </ItemGroup>
 
 </Project>

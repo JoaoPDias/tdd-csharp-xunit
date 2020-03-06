@@ -1,6 +1,6 @@
-﻿namespace CursoOnline.DominioTest.Cursos
+﻿namespace OnlineCourse.Domain.Courses
 {
-    public enum PublicoAlvo
+    public enum TargetAudience
     {
         Estudante,
         Universitario,
