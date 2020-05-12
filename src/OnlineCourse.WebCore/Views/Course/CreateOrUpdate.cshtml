@@ -1,0 +1,81 @@
+﻿@model OnlineCourse.Domain.Courses.CourseDTO
+@{
+    @if (Model.Id > 0)
+    {
+        ViewData["Title"] = "Update Course";
+    }
+    else { ViewData["Title"] = "Create Course"; }
+}
+
+<div id="pad-wrapper">
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/Curso" class="btn">Voltar</a>
+        </div>
+    </div>
+    <div class="row header">
+        <div class="col-md-1">
+            <h3>Cursos</h3>
+        </div>
+    </div>
+    <div class="row form-wrapper">
+        <div class="col-md-12">
+            <form id="form" class="form-horizontal" asp-action="Save" asp-controller="Course" asp-anti-forgery
+                  data-ajax="true" data-ajax-method="POST" data-ajax-failure="formQuandoFalha" data-ajax-success="window.location = '/Course/Index'">
+                <input type="hidden" class="form-control" asp-for="Id">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Nome</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" asp-for="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Descrição</label>
+                    <div class="col-md-8">
+                        <textarea type="text" class="form-control" asp-for="Description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Carga Horária</label>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" asp-for="Workload">
+                        <span asp-validation-for="Workload" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Público Alvo</label>
+                    <div class="col-md-2">
+                        <select class="form-control" asp-for="TargetAudience">
+                            <option value="Estudante">Estudante</option>
+                            <option value="Universitário">Universitário</option>
+                            <option value="Empregado">Empregado</option>
+                            <option value="Empreendedor">Empreendedor</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Valor</label>
+                    <div class="col-md-2">
+                        <input class="form-control" asp-for="CourseFee">
+                        <span asp-validation-for="CourseFee" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-8">
+                        <button class="btn btn-success">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.js"></script>
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/js/domainException.js"></script>
+}

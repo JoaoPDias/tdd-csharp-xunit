@@ -1,0 +1,74 @@
+﻿@using OnlineCourse.Web.Util
+@using OnlineCourse.Domain.Courses
+@model PaginatedList<CourseDTO>
+@{
+    ViewData["Title"] = "Course List";
+}
+
+<div id="pad-wrapper">
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/Cursos" class="btn">Voltar</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/Course/Create" class="btn btn-primary">Novo</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Carga Horária</th>
+                        <th>Publico Alvo</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @item.Workload
+                            </td>
+                            <td>
+                                @item.TargetAudience
+                            </td>
+                            <td>
+                                @item.CourseFee
+                            </td>
+                            <td>
+                                <a href="/Course/Update/@item.Id" class="btn">Editar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @{
+                var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+            }
+
+            <a asp-action="Index"
+               asp-route-page="@(Model.PageIndex - 1)"
+               class="btn btn-default @prevDisabled">
+                Anterior
+            </a>
+            <a asp-action="Index"
+               asp-route-page="@(Model.PageIndex + 1)"
+               class="btn btn-default @nextDisabled">
+                Próximo
+            </a>
+        </div>
+    </div>
+</div>
+

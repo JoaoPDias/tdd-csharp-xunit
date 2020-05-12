@@ -22,7 +22,7 @@ namespace OnlineCourse.DomainTest._Builders
             var faker = new Faker();
             _name = faker.Random.Word();
             _workload = faker.Random.Int(50, 1000);
-            _targetAudience = TargetAudience.Estudante;
+            _targetAudience = faker.PickRandom<TargetAudience>();
             _courseFee = faker.Random.Double(500, 2000);
             _description = faker.Lorem.Paragraph();
         }
