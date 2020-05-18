@@ -45,11 +45,11 @@ namespace OnlineCourse.DomainTest.Courses
             FluentActions.Invoking(() => _courseService.Save(_courseDTO)).Should().Throw<DomainException>().Where(d => d.ErrorMessages.Contains(Resource.InvalidTargetAudience));
         }
         [Fact]
-        public void NaoDeveAdicionarCursoComOMesmoNomeDoOutroSalvo()
+        public void NaoDeveAdicionarCursoComOMesmoNomeEIdDiferenteDoOutroSalvo()
         {
-            var cursoJaSalvo = CourseBuilder.New().WithName(_courseDTO.Name).Build();
+            var cursoJaSalvo = CourseBuilder.New().WithName(_courseDTO.Name).WithId(40).Build();
             _courseRepositoryMock.Setup(r => r.GetByName(_courseDTO.Name)).Returns(cursoJaSalvo);
-
+            _courseDTO.Id = 60;
             FluentActions.Invoking(() => _courseService.Save(_courseDTO)).Should().Throw<DomainException>().Where(d => d.ErrorMessages.Contains(Resource.CourseNameAlreadyExists));
 
         }

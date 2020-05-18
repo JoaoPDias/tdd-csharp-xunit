@@ -26,8 +26,8 @@ namespace OnlineCourse.Web.Controllers
 
         public IActionResult Update(int id)
         {
-            var course = _courseService.GetById(id);
-            return View("CreateOrUpdate", course);
+            var courseDTO = _courseService.GetById(id);
+            return View("CreateOrUpdate", courseDTO);
         }
 
         public IActionResult Create()

@@ -3,7 +3,7 @@
     public enum TargetAudience
     {
         Estudante,
-        Universitario,
+        Universitário,
         Empregado,
         Empreendedor
     }

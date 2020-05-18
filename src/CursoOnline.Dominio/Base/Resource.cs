@@ -3,15 +3,15 @@
     public static class Resource
     {
         public static string InvalidName = "The name cannot be empty or null";
-        public static string EmailInvalido = "Email inválido";
+        public static string InvalidEmail = "Invalid Email";
         public static string InvalidWorkload = "The workload cannot be less than 1";
         public static string InvalidCourseFee = "The courseFee cannot be less than 1";
         public static string CourseNameAlreadyExists = "Another course has the same name";
         public static string InvalidTargetAudience = "Target Audience is Invalid";
-        public static string CpfInvalido = "CPF inválido";
-        public static string CpfJaCadastrado = "CPF já cadastrado";
-        public static string AlunoInvalido = "Aluno inválido";
-        public static string CursoInvalido = "Curso inválido";
+        public static string InvalidCPF = "Invalid CPF";
+        public static string CPFAlreadyExists = "Another student has the same CPF";
+        public static string InvalidStudent = "Invalid Student Name";
+        public static string InvalidCourse = "Curso inválido";
         public static string ValorPagoMaiorQueValorDoCurso =
             "Valor pago na matricula não pode ser maior que valor do curso";
 
@@ -22,5 +22,6 @@
         public static string MatriculaNaoEncontrada = "Matricula não encontrada";
         public static string MatriculaCancelada = "Ação não permitida por matricula está cancelada";
         public static string MatriculaConcluida = "Ação não permitida por matricula está conclída";
+
     }
 }

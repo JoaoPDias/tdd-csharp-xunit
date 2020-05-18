@@ -24,12 +24,25 @@ namespace OnlineCourse.Domain.Courses
         {
             var cursoJaSalvo = _courseRepository.GetByName(courseDTO.Name);
             RuleValidator.New()
-                .When(cursoJaSalvo != null, Resource.CourseNameAlreadyExists)
+                .When(cursoJaSalvo != null && cursoJaSalvo.Id != courseDTO.Id, Resource.CourseNameAlreadyExists)
                 .When(!Enum.TryParse(courseDTO.TargetAudience, out TargetAudience targetAudience), Resource.InvalidTargetAudience)
                 .ThrowExceptionIfExists();
             var curso = new Course(courseDTO.Name, courseDTO.Workload, targetAudience, courseDTO.CourseFee, courseDTO.Description);
-            _courseRepository.Add(curso);
 
+
+            if (courseDTO.Id > 0)
+            {
+                curso = _courseRepository.GetById(courseDTO.Id);
+                curso.UpdateName(courseDTO.Name)
+                    .UpdateCourseFee(courseDTO.CourseFee)
+                    .UpdateWorkload(courseDTO.Workload)
+                    .UpdateDescription(courseDTO.Description)
+                    .UpdateTargetAudience(targetAudience);
+            }
+            else
+            {
+                _courseRepository.Add(curso);
+            }
         }
 
         public CourseDTO GetById(int id)

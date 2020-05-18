@@ -30,6 +30,7 @@ namespace OnlineCourse.Domain.Courses
             CourseFee = courseFee;
             Description = description;
         }
+       
         public Course UpdateName(string name)
         {
             RuleValidator
@@ -68,6 +69,19 @@ namespace OnlineCourse.Domain.Courses
                 CourseFee = this.CourseFee,
                 Description = this.Description
             };
+        }
+
+        public Course UpdateDescription(string description)
+        {
+            Description = description;
+            return this;
+        }
+
+        public Course UpdateTargetAudience(TargetAudience targetAudience)
+        {
+            TargetAudience = targetAudience;
+            return this;
+
         }
     }
 }

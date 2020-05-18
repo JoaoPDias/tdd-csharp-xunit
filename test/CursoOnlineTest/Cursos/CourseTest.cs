@@ -12,17 +12,14 @@ namespace OnlineCourse.DomainTest.Courses
 {
     public class CourseTest : IDisposable
     {
-        private readonly ITestOutputHelper _output;
         private readonly string _name;
         private readonly int _workload;
         private readonly TargetAudience _targetAudience;
         private readonly double _courseFee;
         private readonly string _description;
         private readonly Faker _faker;
-        public CourseTest(ITestOutputHelper output)
+        public CourseTest()
         {
-            _output = output;
-            _output.WriteLine("Construtor sendo executado");
             _faker = new Faker();
             _name = _faker.Random.Word();
             _workload = _faker.Random.Int(50, 1000);
@@ -33,7 +30,6 @@ namespace OnlineCourse.DomainTest.Courses
 
         public void Dispose()
         {
-            _output.WriteLine("Dispose sendo executado");
         }
 
         [Fact]
@@ -90,6 +86,22 @@ namespace OnlineCourse.DomainTest.Courses
             var curso = CourseBuilder.New().Build();
             curso.UpdateName(valorEsperado);
             curso.Name.Should().Be(valorEsperado);
+        }
+        [Fact]
+        public void DeveAlterarDescricao()
+        {
+            var valorEsperado = _faker.Lorem.Paragraphs(3);
+            var curso = CourseBuilder.New().Build();
+            curso.UpdateDescription(valorEsperado);
+            curso.Description.Should().Be(valorEsperado);
+        }
+        [Fact]
+        public void DeveAlterarPublicoAlvo()
+        {
+            var valorEsperado = _faker.PickRandom<TargetAudience>();
+            var curso = CourseBuilder.New().Build();
+            curso.UpdateTargetAudience(valorEsperado);
+            curso.TargetAudience.Should().Be(valorEsperado);
         }
         [Fact]
         public void DeveAlterarCargaHoraria()
